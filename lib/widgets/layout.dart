@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 import 'enums.dart';
 import 'icon_button.dart';
-import 'spin.dart';
 import 'rpx.dart';
 import 'colors.dart';
 
@@ -268,10 +267,7 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
 
     Widget _inner = Container();
 
-    bool _hasAddonLR = widget.onBackPressed != null ||
-        widget.onClosePressed != null ||
-        widget.addonBefore != null ||
-        widget.addonAfter != null;
+    bool _hasAddonLR = widget.onBackPressed != null || widget.onClosePressed != null || widget.addonBefore != null || widget.addonAfter != null;
 
     // 如果有title
     if (widget.title != null) {
@@ -341,37 +337,43 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
       _height = widget.addonBottom != null ? 110 : 100;
     }
 
+    List<Widget> _children = [
+      Positioned(
+        left: 0,
+        top: 0,
+        right: 0,
+        height: r.px(widget.headline ? 240 : 110),
+        child: _inner,
+      ),
+    ];
+
+    if (_addonBefore.length > 0) {
+      _children.add(Positioned(
+        left: 0,
+        top: 0,
+        height: r.px(110),
+        child: Row(children: _addonBefore),
+      ));
+    }
+
+    if (widget.addonAfter != null) {
+      _children.add(Positioned(
+        top: 0,
+        right: 0,
+        height: r.px(110),
+        child: Row(
+          children: [widget.addonAfter],
+        ),
+      ));
+    }
+
     return Container(
       width: double.infinity,
       height: r.px(_height),
       alignment: Alignment.topLeft,
       color: Colors.transparent,
       child: Stack(
-        children: <Widget>[
-          Positioned(
-            left: 0,
-            top: 0,
-            right: 0,
-            height: r.px(widget.headline ? 240 : 110),
-            child: _inner,
-          ),
-          if (_addonBefore.length > 0)
-            Positioned(
-              left: 0,
-              top: 0,
-              height: r.px(110),
-              child: Row(children: _addonBefore),
-            ),
-          if (widget.addonAfter != null)
-            Positioned(
-              top: 0,
-              right: 0,
-              height: r.px(110),
-              child: Row(
-                children: [widget.addonAfter],
-              ),
-            ),
-        ],
+        children: _children,
       ),
     );
   }
