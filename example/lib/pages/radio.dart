@@ -17,7 +17,7 @@ class _PageRadioState extends State<PageRadio> {
     return AtLayout(
       header: AtLayoutHeader(
         title: 'Radio Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

@@ -16,7 +16,7 @@ class _PageInputState extends State<PageInput> {
     return AtLayout(
       header: AtLayoutHeader(
         title: 'Input Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

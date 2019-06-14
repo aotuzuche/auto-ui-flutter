@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'enums.dart';
 import 'icon_button.dart';
+import 'spin.dart';
 import 'rpx.dart';
 import 'colors.dart';
 
@@ -80,6 +81,9 @@ class AtLayoutHeader extends StatefulWidget implements PreferredSizeWidget {
   /// 可以是 AtBorder.None AtBorder.Shadow AtBorder.Line 的一种
   final AtBorder border;
 
+  // 返回按钮、关闭按钮，文字title的颜色
+  final Color color;
+
   // 背景色
   final Color backgroundColor;
 
@@ -111,6 +115,7 @@ class AtLayoutHeader extends StatefulWidget implements PreferredSizeWidget {
     this.addonBottom,
     this.headline = false,
     this.border = AtBorder.Shadow,
+    this.color = AtColors.textColor,
     this.backgroundColor = const Color(0xFFFFFFFF),
     this.onBackPressed,
     this.onClosePressed,
@@ -165,23 +170,19 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
       if (widget.ghost) {
         _borderShadow.add(BoxShadow(
           color: Colors.black.withOpacity(0),
-          spreadRadius: r.px(30),
-          blurRadius: r.px(30),
-          offset: Offset(0, 0),
+          blurRadius: r.px(15),
         ));
       } else {
         _borderShadow.add(BoxShadow(
-          color: Colors.black.withOpacity(0.07),
-          spreadRadius: r.px(30),
-          blurRadius: r.px(30),
-          offset: Offset(0, r.px(-30)),
+          color: Colors.black.withOpacity(0.08),
+          blurRadius: r.px(15),
         ));
       }
     } else if (widget.border == AtBorder.Line) {
       _border = Border(
         bottom: BorderSide(
           width: r.px(1),
-          color: AtColors.borderColor.withOpacity(widget.ghost ? 0 : 1),
+          color: Colors.black.withOpacity(widget.ghost ? 0 : 0.06),
         ),
       );
     }
@@ -207,7 +208,7 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
         duration: Duration(milliseconds: 200),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: widget.backgroundColor.withOpacity(widget.ghost ? 0 : 1),
+          color: widget.ghost ? widget.backgroundColor.withOpacity(0) : widget.backgroundColor,
           border: _border,
           boxShadow: _borderShadow,
         ),
@@ -236,7 +237,7 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
     return AtIconButton(
       onPressed: widget.onBackPressed,
       icon: 'lib/widgets/assets/icon-back.png',
-      iconColor: widget.ghost ? Colors.white : AtColors.textColor,
+      iconColor: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
       package: 'auto_ui',
       height: r.px(80),
       padding: EdgeInsets.symmetric(horizontal: r.px(20)),
@@ -252,7 +253,7 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
     return AtIconButton(
       onPressed: widget.onClosePressed,
       icon: 'lib/widgets/assets/icon-close.png',
-      iconColor: widget.ghost ? Colors.white : AtColors.textColor,
+      iconColor: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
       package: 'auto_ui',
       height: r.px(80),
       padding: EdgeInsets.symmetric(horizontal: r.px(20)),
@@ -283,7 +284,7 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
           child: Text(
             widget.title,
             style: TextStyle(
-              color: widget.ghost ? Colors.white : AtColors.textColor,
+              color: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
               fontWeight: FontWeight.bold,
               fontSize: r.fpx(48),
             ),
@@ -295,7 +296,7 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
             widget.title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: widget.ghost ? Colors.white : AtColors.textColor,
+              color: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
               fontSize: r.fpx(36),
             ),
           ),
@@ -383,6 +384,7 @@ class AtLayoutBody extends StatelessWidget {
   final bool showScrollBar;
   final ScrollController scrollController;
   final bool scrollable;
+  final bool loading;
 
   const AtLayoutBody({
     Key key,
@@ -392,11 +394,19 @@ class AtLayoutBody extends StatelessWidget {
     this.scrollController,
     this.showScrollBar = false,
     this.scrollable = true,
+    this.loading = false,
   })  : assert(children != null || child != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // 如果加载中，直接返回一个loading标识
+    if (loading) {
+//      Rpx r = Rpx.init(context);
+      // TODO: loading样式
+      return Container();
+    }
+
     List<Widget> _children = [];
     if (child != null) {
       _children.add(child);
@@ -463,16 +473,14 @@ class AtLayoutFooter extends StatelessWidget {
     // 上边样式
     if (border == AtBorder.Shadow) {
       _borderShadow.add(BoxShadow(
-        color: Colors.black.withOpacity(0.02),
-        spreadRadius: r.px(20),
-        blurRadius: r.px(20),
-        offset: Offset(0, r.px(20)),
+        color: Colors.black.withOpacity(0.08),
+        blurRadius: r.px(15),
       ));
     } else if (border == AtBorder.Line) {
       _border = Border(
         top: BorderSide(
           width: r.px(1),
-          color: AtColors.borderColor,
+          color: Colors.black.withOpacity(0.06),
         ),
       );
     }

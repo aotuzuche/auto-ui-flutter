@@ -14,7 +14,6 @@ export './widgets/alert.dart';
 export './widgets/dialog.dart';
 export './widgets/popup.dart';
 export './widgets/toast.dart';
-export './widgets/router.dart';
 export './widgets/enums.dart';
 export './widgets/rpx.dart';
 export './widgets/colors.dart';

@@ -15,7 +15,7 @@ class _PagePopupState extends State<PagePopup> {
       backgroundColor: Colors.white,
       header: AtLayoutHeader(
         title: 'Popup Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

@@ -15,7 +15,7 @@ class _PageToastState extends State<PageToast> {
       backgroundColor: Colors.white,
       header: AtLayoutHeader(
         title: 'Toast Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

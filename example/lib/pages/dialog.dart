@@ -15,7 +15,7 @@ class _PageDialogState extends State<PageDialog> {
       backgroundColor: Colors.white,
       header: AtLayoutHeader(
         title: 'Dialog Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

@@ -15,7 +15,7 @@ class _PageButtonState extends State<PageButton> {
       backgroundColor: Colors.white,
       header: AtLayoutHeader(
         title: 'Button Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

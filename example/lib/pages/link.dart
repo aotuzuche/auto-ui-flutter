@@ -14,7 +14,7 @@ class _PageLinkState extends State<PageLink> {
     return AtLayout(
       header: AtLayoutHeader(
         title: 'Link Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

@@ -14,7 +14,7 @@ class _PageCellState extends State<PageCell> {
     return AtLayout(
       header: AtLayoutHeader(
         title: 'Cell Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
       ),
       body: AtLayoutBody(
         padding: EdgeInsets.symmetric(vertical: r.px(20)),
@@ -26,9 +26,16 @@ class _PageCellState extends State<PageCell> {
           ),
           AtCellTitle('多条内容，使用AtCell的children属性，如果同时有child和children，那child会排在children前面', marginTop: r.px(20)),
           AtCell(
+            dividerIndent: 20,
+            dividerRightIndent: 20,
             children: <Widget>[
-              AtCellRow(label: '内容1'),
-              AtCellRow(label: '内容2'),
+              AtCellRow(
+                child: Text('asdfsadf'),
+                value: 1,
+                onPressed: (v) {},
+                arrow: true,
+              ),
+              AtCellRow(label: '内容2', value: 2, onPressed: (v) {}),
               AtCellRow(label: '内容3'),
               AtCellRow(label: '内容4'),
             ],

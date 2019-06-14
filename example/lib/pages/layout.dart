@@ -12,11 +12,13 @@ class _PageLayoutState extends State<PageLayout> {
     Rpx r = Rpx.init(context);
 
     return AtLayout(
+      backgroundColor: Colors.white,
       header: AtLayoutHeader(
         title: 'Layout Widget',
-        onBackPressed: () => AtRouter.pop(context),
-        onClosePressed: () => AtRouter.pop(context),
+        headline: true,
+        onClosePressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
+        brightness: Brightness.light,
       ),
       body: AtLayoutBody(
         padding: EdgeInsets.symmetric(vertical: r.px(20)),
@@ -52,6 +54,9 @@ class _PageLayoutState extends State<PageLayout> {
           ),
         ],
       ),
+      footer: AtLayoutFooter(
+        child: AtButton(onPressed: () {}, text: '确认订单'),
+      ),
     );
   }
 
@@ -65,7 +70,7 @@ class _PageLayoutState extends State<PageLayout> {
         break;
     }
     if (page != null) {
-      AtRouter.push(context, page);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
     }
   }
 }

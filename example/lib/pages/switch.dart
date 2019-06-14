@@ -17,7 +17,7 @@ class _PageSwitchState extends State<PageSwitch> {
     return AtLayout(
       header: AtLayoutHeader(
         title: 'Switch Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

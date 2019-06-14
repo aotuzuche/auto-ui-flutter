@@ -14,7 +14,7 @@ class _PagePressedState extends State<PagePressed> {
     return AtLayout(
       header: AtLayoutHeader(
         title: 'Pressed Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

@@ -22,7 +22,7 @@ class _PageTabBarState extends State<PageTabBar> with TickerProviderStateMixin {
     return AtLayout(
       header: AtLayoutHeader(
         title: 'TabBar Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
         addonBottom: AtTabBar(
           controller: tabController,

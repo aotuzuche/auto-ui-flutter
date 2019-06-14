@@ -15,7 +15,7 @@ class _PageAlertState extends State<PageAlert> {
       backgroundColor: Colors.white,
       header: AtLayoutHeader(
         title: 'Alert Widget',
-        onBackPressed: () => AtRouter.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(

@@ -132,7 +132,7 @@ class _PageHomeState extends State<PageHome> {
       'toast': PageToast(),
     };
     if (map[p] != null) {
-      AtRouter.push(context, map[p]);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => map[p]));
     }
   }
 }
