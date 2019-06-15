@@ -14,6 +14,7 @@ Map<AtTheme, Color> _bgColors = {
 
 class AtRadio extends StatefulWidget {
   final String text;
+  final double fontSize;
   final AtTheme theme;
   final bool disabled;
   final bool actived;
@@ -24,6 +25,7 @@ class AtRadio extends StatefulWidget {
   AtRadio({
     Key key,
     this.text = '',
+    this.fontSize,
     this.theme = AtTheme.Primary,
     this.disabled = false,
     this.actived = false,
@@ -93,9 +95,15 @@ class _AtRadioState extends State<AtRadio> {
           color: widget.disabled
               ? AtColors.textColor.withOpacity(0.5)
               : AtColors.textColor.withOpacity(_active || !widget.actived ? 0.7 : 1),
-          fontSize: r.px(28),
+          fontSize: widget.fontSize ?? r.px(28),
         ),
       );
+    }
+
+    List<Widget> _children = [_radio];
+    if (_text != null) {
+      _children.add(SizedBox(width: r.px(12)));
+      _children.add(_text);
     }
 
     Widget _result = Container(
@@ -104,11 +112,7 @@ class _AtRadioState extends State<AtRadio> {
       padding: widget.padding ?? EdgeInsets.symmetric(vertical: r.px(10)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          _radio,
-          if (_text != null) SizedBox(width: r.px(12)),
-          if (_text != null) _text,
-        ],
+        children: _children,
       ),
     );
 

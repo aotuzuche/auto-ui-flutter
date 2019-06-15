@@ -80,7 +80,7 @@ class _PageHomeState extends State<PageHome> {
         scrollController: scrollController,
         children: <Widget>[
           AtCell(
-            dividerIndent: r.px(40),
+            dividerLeftIndent: r.px(40),
             children: <Widget>[
               Transform.translate(
                 offset: Offset(0, bannerMarginTop),

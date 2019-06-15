@@ -15,7 +15,9 @@ Map<AtTheme, Color> _buttonColors = {
 
 class AtButton extends StatefulWidget {
   final String text;
+  final double fontSize;
   final double width;
+  final double height;
   final EdgeInsetsGeometry margin;
   final EdgeInsetsGeometry padding;
   final Widget child;
@@ -23,7 +25,6 @@ class AtButton extends StatefulWidget {
   final Widget addonAfter;
   final AtTheme theme;
   final bool hollow;
-  final bool mini;
   final bool loading;
   final bool disabled;
   final VoidCallback onPressed;
@@ -31,15 +32,16 @@ class AtButton extends StatefulWidget {
   const AtButton({
     Key key,
     this.text,
+    this.fontSize,
     this.child,
     this.addonBefore,
     this.addonAfter,
     this.width,
+    this.height,
     this.margin,
     this.padding,
     this.theme = AtTheme.Primary,
     this.hollow = false,
-    this.mini = false,
     this.loading = false,
     this.disabled = false,
     @required this.onPressed,
@@ -136,7 +138,7 @@ class _AtButtonState extends State<AtButton> {
         widget.text,
         style: TextStyle(
           color: _textColor,
-          fontSize: r.fpx(30),
+          fontSize: widget.fontSize ?? r.fpx(30),
         ),
       ));
     }
@@ -160,7 +162,7 @@ class _AtButtonState extends State<AtButton> {
         duration: Duration(milliseconds: 100),
         alignment: Alignment.center,
         width: widget.width ?? null,
-        height: r.px(widget.mini ? 72 : 100),
+        height: widget.height ?? r.px(100),
         padding: widget.padding ?? EdgeInsets.symmetric(horizontal: r.px(30)),
         decoration: BoxDecoration(
           color: _backgroundColor,

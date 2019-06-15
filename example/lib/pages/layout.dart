@@ -12,20 +12,17 @@ class _PageLayoutState extends State<PageLayout> {
     Rpx r = Rpx.init(context);
 
     return AtLayout(
-      backgroundColor: Colors.white,
       header: AtLayoutHeader(
         title: 'Layout Widget',
-        headline: true,
-        onClosePressed: () => Navigator.pop(context),
+        onBackPressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
-        brightness: Brightness.light,
       ),
       body: AtLayoutBody(
         padding: EdgeInsets.symmetric(vertical: r.px(20)),
         children: <Widget>[
           AtCellTitle('Header部分'),
           AtCell(
-            dividerIndent: r.px(40),
+            dividerLeftIndent: r.px(40),
             children: <Widget>[
               AtCellRow(arrow: true, label: '左右侧挂载', value: 'addonLR', onPressed: onCellPressed),
               AtCellRow(arrow: true, label: 'headline模式', value: 'button', onPressed: onCellPressed),
@@ -36,7 +33,7 @@ class _PageLayoutState extends State<PageLayout> {
           ),
           AtCellTitle('Body部分', marginTop: r.px(20)),
           AtCell(
-            dividerIndent: r.px(40),
+            dividerLeftIndent: r.px(40),
             children: <Widget>[
               AtCellRow(arrow: true, label: 'padding属性', value: 'addonLR', onPressed: onCellPressed),
               AtCellRow(arrow: true, label: 'showScollBar属性', value: 'button', onPressed: onCellPressed),
@@ -45,7 +42,7 @@ class _PageLayoutState extends State<PageLayout> {
           ),
           AtCellTitle('Footer部分', marginTop: r.px(20)),
           AtCell(
-            dividerIndent: r.px(40),
+            dividerLeftIndent: r.px(40),
             children: <Widget>[
               AtCellRow(arrow: true, label: 'header的左右侧挂载', value: 'addonLR', onPressed: onCellPressed),
               AtCellRow(arrow: true, label: 'header的headline模式', value: 'button', onPressed: onCellPressed),

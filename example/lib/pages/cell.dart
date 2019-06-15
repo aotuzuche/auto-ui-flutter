@@ -26,23 +26,16 @@ class _PageCellState extends State<PageCell> {
           ),
           AtCellTitle('多条内容，使用AtCell的children属性，如果同时有child和children，那child会排在children前面', marginTop: r.px(20)),
           AtCell(
-            dividerIndent: 20,
-            dividerRightIndent: 20,
             children: <Widget>[
-              AtCellRow(
-                child: Text('asdfsadf'),
-                value: 1,
-                onPressed: (v) {},
-                arrow: true,
-              ),
-              AtCellRow(label: '内容2', value: 2, onPressed: (v) {}),
+              AtCellRow(label: '内容1'),
+              AtCellRow(label: '内容2'),
               AtCellRow(label: '内容3'),
               AtCellRow(label: '内容4'),
             ],
           ),
-          AtCellTitle('AtCell的dividerIndent和dividerRightIndent分别控制row之间的分割线左缩进和右缩进', marginTop: r.px(20)),
+          AtCellTitle('AtCell的dividerLeftIndent和dividerRightIndent分别控制row之间的分割线左缩进和右缩进', marginTop: r.px(20)),
           AtCell(
-            dividerIndent: r.px(40),
+            dividerLeftIndent: r.px(40),
             dividerRightIndent: r.px(40),
             children: <Widget>[
               AtCellRow(label: '内容1'),
@@ -143,14 +136,14 @@ class _PageCellState extends State<PageCell> {
                 label: '按钮',
                 flexEnd: AtButton(
                   text: '发送验证码',
-                  mini: true,
+                  height: r.px(70),
                   onPressed: () {},
                 ),
               ),
               AtCellRow(
                 child: AtButton(
                   width: r.vw() - r.px(80),
-                  mini: true,
+                  height: r.px(70),
                   text: '点击',
                   onPressed: () {},
                 ),

@@ -74,18 +74,20 @@ class _PageButtonState extends State<PageButton> {
             margin: EdgeInsets.only(left: r.px(40), right: r.px(40), bottom: r.px(20)),
             onPressed: () {},
           ),
-          AtCellTitle('小按钮'),
+          AtCellTitle('自定义高度和字体大小'),
           Row(
             children: <Widget>[
               AtButton(
-                text: '小按钮',
-                mini: true,
+                text: '按钮',
+                height: r.px(200),
+                fontSize: r.px(40),
                 margin: EdgeInsets.only(left: r.px(40), right: r.px(20), bottom: r.px(20)),
                 onPressed: () {},
               ),
               AtButton(
-                text: '小按钮',
-                mini: true,
+                text: '按钮',
+                height: r.px(70),
+                fontSize: r.px(26),
                 theme: AtTheme.Danger,
                 margin: EdgeInsets.only(right: r.px(40), bottom: r.px(20)),
                 onPressed: () {},
@@ -128,7 +130,7 @@ class _PageButtonState extends State<PageButton> {
               AtButton(
                 text: '加载中...',
                 loading: true,
-                mini: true,
+                height: r.px(70),
                 margin: EdgeInsets.only(left: r.px(40), right: r.px(20), bottom: r.px(20)),
                 onPressed: () {},
               ),
@@ -136,7 +138,7 @@ class _PageButtonState extends State<PageButton> {
                 text: '加载中...',
                 loading: true,
                 hollow: true,
-                mini: true,
+                height: r.px(70),
                 margin: EdgeInsets.only(bottom: r.px(20)),
                 onPressed: () {},
               ),

@@ -8,7 +8,7 @@ import 'colors.dart';
 class AtCell extends StatelessWidget {
   final List<Widget> children;
   final Widget child;
-  final double dividerIndent;
+  final double dividerLeftIndent;
   final double dividerRightIndent;
   final AtBorder border;
 
@@ -16,7 +16,7 @@ class AtCell extends StatelessWidget {
     Key key,
     this.child,
     this.children,
-    this.dividerIndent = 0,
+    this.dividerLeftIndent = 0,
     this.dividerRightIndent = 0,
     this.border = AtBorder.Line,
   })  : assert(child != null || children != null),
@@ -45,7 +45,7 @@ class AtCell extends StatelessWidget {
           ++i,
           AtDivider(
             margin: EdgeInsets.only(
-              left: dividerIndent,
+              left: dividerLeftIndent,
               right: dividerRightIndent,
             ),
           ),
@@ -208,8 +208,7 @@ class _AtCellRowState extends State<AtCellRow> {
             children: _children,
           ),
         ),
-        ..._addonAfter,
-      ]);
+      ]..addAll(_addonAfter));
     }
   }
 
