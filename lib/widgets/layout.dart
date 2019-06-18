@@ -11,6 +11,9 @@ class AtLayout extends StatelessWidget {
   // 头部widget
   final PreferredSizeWidget header;
 
+  // 绝对定位头部widget
+  final Widget positionedHeader;
+
   // 身体widget
   final Widget body;
 
@@ -23,6 +26,7 @@ class AtLayout extends StatelessWidget {
   AtLayout({
     Key key,
     this.header,
+    this.positionedHeader,
     @required this.body,
     this.footer,
     this.backgroundColor = AtColors.backgroundColor,
@@ -30,26 +34,27 @@ class AtLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget _header;
     Widget _body;
 
-    if (header != null && header is AtLayoutHeader && (header as AtLayoutHeader).positioned) {
+    if (positionedHeader != null) {
       _body = Stack(
         children: <Widget>[
           body,
           Positioned(
-            child: header,
+            top: 0,
+            left: 0,
+            right: 0,
+            child: positionedHeader,
           ),
         ],
       );
     } else {
-      _header = header;
       _body = body;
     }
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: _header,
+      appBar: header,
       body: _body,
       bottomNavigationBar: footer,
     );
@@ -95,9 +100,6 @@ class AtLayoutHeader extends StatefulWidget implements PreferredSizeWidget {
   // 状态栏颜色
   final Brightness brightness;
 
-  // 用Positioned的方式固定头部
-  final bool positioned;
-
   // 是否可见，切换可见时会以动画的方式切换
   final bool visible;
 
@@ -119,7 +121,6 @@ class AtLayoutHeader extends StatefulWidget implements PreferredSizeWidget {
     this.onBackPressed,
     this.onClosePressed,
     this.brightness = Brightness.dark,
-    this.positioned = false,
     this.visible = true,
     this.ghost = false,
   })  : assert(child != null || title != null),
@@ -236,10 +237,10 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
     return AtIconButton(
       onPressed: widget.onBackPressed,
       icon: 'lib/widgets/assets/icon-back.png',
-      iconColor: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
+      color: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
       package: 'auto_ui',
       height: r.px(80),
-      padding: EdgeInsets.symmetric(horizontal: r.px(20)),
+      padding: EdgeInsets.only(left: r.px(20), right: r.px(10)),
       iconWidth: r.px(30),
       iconHeight: r.px(30),
     );
@@ -252,7 +253,7 @@ class _AtLayoutHeaderState extends State<AtLayoutHeader> with SingleTickerProvid
     return AtIconButton(
       onPressed: widget.onClosePressed,
       icon: 'lib/widgets/assets/icon-close.png',
-      iconColor: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
+      color: widget.color != null ? widget.color : widget.ghost ? Colors.white : AtColors.textColor,
       package: 'auto_ui',
       height: r.px(80),
       padding: EdgeInsets.symmetric(horizontal: r.px(20)),

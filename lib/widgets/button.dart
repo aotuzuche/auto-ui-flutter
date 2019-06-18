@@ -70,12 +70,12 @@ class _AtButtonState extends State<AtButton> {
         ? Color.lerp(
             Colors.white,
             _buttonColors[widget.theme],
-            widget.disabled ? 0 : _active ? 0.05 : 0,
+            widget.disabled ? 0 : _active ? 0.1 : 0,
           )
         : Color.lerp(
             _buttonColors[widget.theme].withOpacity(widget.disabled ? 0.7 : 1),
             Colors.black,
-            widget.disabled ? 0 : _active ? 0.05 : 0,
+            widget.disabled ? 0 : _active ? 0.1 : 0,
           );
 
     // 边框

@@ -12,11 +12,7 @@ class _PageLayoutState extends State<PageLayout> {
     Rpx r = Rpx.init(context);
 
     return AtLayout(
-      header: AtLayoutHeader(
-        title: 'Layout Widget',
-        onBackPressed: () => Navigator.pop(context),
-        border: AtBorder.Shadow,
-      ),
+      positionedHeader: _Header(),
       body: AtLayoutBody(
         padding: EdgeInsets.symmetric(vertical: r.px(20)),
         children: <Widget>[
@@ -69,5 +65,21 @@ class _PageLayoutState extends State<PageLayout> {
     if (page != null) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => page));
     }
+  }
+}
+
+class _Header extends StatefulWidget {
+  @override
+  _HeaderState createState() => _HeaderState();
+}
+
+class _HeaderState extends State<_Header> {
+  @override
+  Widget build(BuildContext context) {
+    return AtLayoutHeader(
+      title: 'Layout Widget',
+      onBackPressed: () => Navigator.pop(context),
+      border: AtBorder.Shadow,
+    );
   }
 }

@@ -55,7 +55,7 @@ class _AtRadioState extends State<AtRadio> {
     Color _background = Color.lerp(
       AtColors.borderColor.withOpacity(widget.disabled ? 0.7 : 1),
       Colors.black,
-      widget.disabled ? 0 : _active ? widget.actived ? 0.05 : 0.02 : 0,
+      widget.disabled ? 0 : _active ? widget.actived ? 0.05 : 0.05 : 0,
     );
 
     // 如果激活状态，更换背景色
@@ -63,7 +63,7 @@ class _AtRadioState extends State<AtRadio> {
       _background = Color.lerp(
         _bgColors[widget.theme].withOpacity(widget.disabled ? 0.7 : 1),
         Colors.black,
-        widget.disabled ? 0 : _active ? 0.05 : 0,
+        widget.disabled ? 0 : _active ? 0.1 : 0,
       );
     }
 

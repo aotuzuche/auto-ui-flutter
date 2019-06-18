@@ -15,6 +15,7 @@ class _PageLinkState extends State<PageLink> {
       header: AtLayoutHeader(
         title: 'Link Widget',
         onBackPressed: () => Navigator.pop(context),
+        onClosePressed: () => Navigator.pop(context),
         border: AtBorder.Shadow,
       ),
       body: AtLayoutBody(
@@ -39,6 +40,15 @@ class _PageLinkState extends State<PageLink> {
                   color: AtColors.secondaryColor,
                   onPressed: () {},
                   text: '另一个链接',
+                ),
+                AtIconButton(
+                  icon: 'lib/widgets/assets/icon-back.png',
+                  iconWidth: r.px(40),
+                  iconHeight: r.px(40),
+                  width: r.px(80),
+                  height: r.px(80),
+                  package: 'auto_ui',
+                  onPressed: () {},
                 ),
               ],
             ),

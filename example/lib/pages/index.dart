@@ -56,10 +56,9 @@ class _PageHomeState extends State<PageHome> {
     Rpx r = Rpx.init(context);
 
     return AtLayout(
-      header: AtLayoutHeader(
+      positionedHeader: AtLayoutHeader(
         title: 'Auto UI',
         border: AtBorder.Shadow,
-        positioned: true,
         headline: true,
         brightness: visible ? Brightness.light : Brightness.dark,
         visible: visible,

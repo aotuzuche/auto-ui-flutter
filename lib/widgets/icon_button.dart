@@ -4,9 +4,10 @@ class AtIconButton extends StatefulWidget {
   final VoidCallback onPressed;
   final double width;
   final double height;
+  final Alignment alignment;
   final double iconWidth;
   final double iconHeight;
-  final Color iconColor;
+  final Color color;
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
   final String icon;
@@ -20,8 +21,9 @@ class AtIconButton extends StatefulWidget {
     this.height,
     this.iconWidth,
     this.iconHeight,
-    this.iconColor,
+    this.color,
     this.padding,
+    this.alignment,
     this.margin,
     this.package,
     @required this.icon,
@@ -43,11 +45,6 @@ class _AtIconButtonState extends State<AtIconButton> {
 
   @override
   Widget build(BuildContext context) {
-    Color _color = Color.lerp(
-      widget.iconColor,
-      Colors.white,
-      widget.disabled ? 0 : _active ? 0.4 : 0,
-    );
     return GestureDetector(
       onTap: widget.disabled ? null : widget.onPressed,
       onTapDown: (_) => onActive(),
@@ -58,12 +55,20 @@ class _AtIconButtonState extends State<AtIconButton> {
         height: widget.height,
         width: widget.width,
         padding: widget.padding,
-        child: Image.asset(
-          widget.icon,
-          package: widget.package,
-          width: widget.iconWidth,
-          height: widget.iconHeight,
-          color: _color,
+        margin: widget.margin,
+        child: Align(
+          alignment: widget.alignment ?? Alignment.center,
+          child: AnimatedOpacity(
+            duration: Duration(milliseconds: 100),
+            opacity: _active ? 0.6 : 1,
+            child: Image.asset(
+              widget.icon,
+              package: widget.package,
+              width: widget.iconWidth,
+              height: widget.iconHeight,
+              color: widget.color,
+            ),
+          ),
         ),
       ),
     );

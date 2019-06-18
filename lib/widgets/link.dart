@@ -75,7 +75,7 @@ class _AtLinkState extends State<AtLink> {
         margin: widget.margin,
         child: AnimatedOpacity(
           duration: Duration(milliseconds: 100),
-          opacity: _active ? 0.7 : 1,
+          opacity: _active ? 0.6 : 1,
           child: _inner,
         ),
       ),
