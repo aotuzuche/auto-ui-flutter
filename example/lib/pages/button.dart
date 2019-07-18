@@ -188,6 +188,20 @@ class _PageButtonState extends State<PageButton> {
             margin: EdgeInsets.only(left: r.px(40), right: r.px(40), bottom: r.px(20)),
             onPressed: () {},
           ),
+          AtCellTitle('Actived'),
+          AtButton(
+            text: 'actived',
+            actived: true,
+            margin: EdgeInsets.only(left: r.px(40), right: r.px(40), bottom: r.px(20)),
+            onPressed: () {},
+          ),
+          AtButton(
+            text: 'actived',
+            hollow: true,
+            actived: true,
+            margin: EdgeInsets.only(left: r.px(40), right: r.px(40), bottom: r.px(20)),
+            onPressed: () {},
+          ),
         ],
       ),
     );

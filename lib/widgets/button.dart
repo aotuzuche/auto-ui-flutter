@@ -27,6 +27,7 @@ class AtButton extends StatefulWidget {
   final bool hollow;
   final bool loading;
   final bool disabled;
+  final bool actived;
   final VoidCallback onPressed;
 
   const AtButton({
@@ -44,6 +45,7 @@ class AtButton extends StatefulWidget {
     this.hollow = false,
     this.loading = false,
     this.disabled = false,
+    this.actived = false,
     @required this.onPressed,
   })  : assert(text != null || child != null),
         super(key: key);
@@ -57,7 +59,7 @@ class _AtButtonState extends State<AtButton> {
 
   @override
   void initState() {
-    _active = false;
+    _active = widget.actived;
     super.initState();
   }
 
@@ -187,12 +189,18 @@ class _AtButtonState extends State<AtButton> {
   }
 
   void onActive() {
+    if (widget.actived) {
+      return;
+    }
     setState(() {
       _active = true;
     });
   }
 
   void onUnActive() {
+    if (widget.actived) {
+      return;
+    }
     setState(() {
       _active = false;
     });
